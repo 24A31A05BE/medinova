@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>MediNova | AI-Powered Home Healthcare</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html {
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body {
+    color: #183b56;
+    background: #f7fbfd;
+    line-height: 1.6;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background: white;
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #087f8c;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #183b56;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #087f8c;
+}
+
+/* HERO */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 70px 8%;
+    background: linear-gradient(135deg, #e8f9f7, #eef8ff);
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: #123b52;
+}
+
+.hero h1 span {
+    color: #087f8c;
+}
+
+.hero p {
+    font-size: 19px;
+    margin-bottom: 30px;
+    color: #526b78;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+.primary {
+    background: #087f8c;
+    color: white;
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    background: #056570;
+}
+
+.secondary {
+    border: 2px solid #087f8c;
+    color: #087f8c;
+}
+
+.secondary:hover {
+    background: #087f8c;
+    color: white;
+}
+
+/* SECTIONS */
+section {
+    padding: 80px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+    color: #647985;
+}
+
+/* PROBLEM */
+.problem {
+    background: white;
+}
+
+.problem-box {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+}
+
+/* FEATURES */
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card {
+    cursor: pointer;
+}
+
+/* SERVICE DETAIL PAGE */
+.service-page {
+    display: none;
+    padding: 60px 8%;
+    min-height: 80vh;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: #087f8c;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.service-header {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 40px;
+}
+
+.service-header .icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.service-header h1 {
+    font-size: 40px;
+    color: #123b52;
+    margin-bottom: 15px;
+}
+
+.service-header p {
+    font-size: 18px;
+    color: #526b78;
+}
+
+.service-detail-list {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    display: grid;
+    gap: 15px;
+}
+
+.service-detail-list div {
+    background: white;
+    padding: 18px 22px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+    font-weight: 600;
+}
+
+.service-cta {
+    text-align: center;
+}
+
+
+
+.icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #087f8c;
+}
+
+/* HOW IT WORKS */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.step {
+    text-align: center;
+}
+
+.number {
+    width: 55px;
+    height: 55px;
+    margin: auto auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #087f8c;
+    color: white;
+    border-radius: 50%;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* BENEFITS */
+.benefits {
+    background: #eaf8f7;
+}
+
+.benefit-list {
+    max-width: 850px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.benefit {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+/* CTA */
+.cta {
+    text-align: center;
+    background: #087f8c;
+    color: white;
+}
+
+.cta h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.cta p {
+    margin-bottom: 25px;
+}
+
+.cta .btn {
+    background: white;
+    color: #087f8c;
+}
+
+/* CONTACT */
+.contact {
+    text-align: center;
+    background: white;
+}
+
+.contact-info {
+    margin-top: 25px;
+    font-size: 18px;
+}
+
+.contact-info p {
+    margin: 8px;
+}
+
+/* FOOTER */
+footer {
+    background: #123b52;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    padding-bottom: calc(25px + env(safe-area-inset-bottom, 0px));
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+
+    .features,
+    .steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+}
+
+@media(max-width: 600px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .features,
+    .steps,
+    .benefit-list {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">MediNova</div>
+
+    <ul id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#problem">Problem</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div id="main-content">
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+            AI-Powered
+            <span>Healthcare</span>
+            at Your Doorstep
+        </h1>
+
+        <p>
+            Reliable, affordable and personalized healthcare
+            support for elderly and chronically ill patients,
+            right from the comfort of home.
+        </p>
+
+        <a href="#services" class="btn primary">
+            Explore Services
+        </a>
+
+        <a href="#contact" class="btn secondary">
+            Get Started
+        </a>
+
+    </div>
+
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+
+    <h2 class="section-title">
+        Healthcare Should Be Easier
+    </h2>
+
+    <p class="section-subtitle">
+        Many elderly and chronically ill patients face
+        difficulties accessing regular healthcare.
+    </p>
+
+    <div class="problem-box">
+
+        <p>
+            Hospital travel, long waiting times, medicine
+            management, regular checkups and limited access
+            to reliable home healthcare can create stress
+            for patients and their families.
+        </p>
+
+        <br>
+
+        <p>
+            <strong>MediNova brings essential healthcare
+            services closer to you.</strong>
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+
+    <h2 class="section-title">
+        Our Healthcare Services
+    </h2>
+
+    <p class="section-subtitle">
+        Everything you need for convenient healthcare
+        management in one platform.
+    </p>
+
+    <div class="features">
+
+        <div class="card" onclick="openService('doctor')">
+            <div class="icon">👨‍⚕️</div>
+            <h3>Doctor Consultation</h3>
+            <p>Connect with doctors for convenient consultations.</p>
+        </div>
+
+        <div class="card" onclick="openService('nurse')">
+            <div class="icon">👩‍⚕️</div>
+            <h3>Home Nurse Booking</h3>
+            <p>Book professional nursing services at home.</p>
+        </div>
+
+        <div class="card" onclick="openService('medicine')">
+            <div class="icon">💊</div>
+            <h3>Medicine Reminders</h3>
+            <p>Never miss important medication schedules.</p>
+        </div>
+
+        <div class="card" onclick="openService('monitoring')">
+            <div class="icon">❤️</div>
+            <h3>AI Health Monitoring</h3>
+            <p>Monitor health information with AI-powered support.</p>
+        </div>
+
+        <div class="card" onclick="openService('appointments')">
+            <div class="icon">📅</div>
+            <h3>Appointments</h3>
+            <p>Schedule and manage healthcare appointments easily.</p>
+        </div>
+
+        <div class="card" onclick="openService('prescriptions')">
+            <div class="icon">📄</div>
+            <h3>Digital Prescriptions</h3>
+            <p>Access prescriptions and healthcare records digitally.</p>
+        </div>
+
+        <div class="card" onclick="openService('emergency')">
+            <div class="icon">🚨</div>
+            <h3>Emergency Support</h3>
+            <p>Quickly access emergency healthcare assistance.</p>
+        </div>
+
+        <div class="card" onclick="openService('caregiver')">
+            <div class="icon">👨‍👩‍👧</div>
+            <h3>Caregiver Updates</h3>
+            <p>Keep family caregivers informed about patient care.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="benefits">
+
+    <h2 class="section-title">
+        How MediNova Works
+    </h2>
+
+    <p class="section-subtitle">
+        Simple steps to access healthcare from home.
+    </p>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="number">1</div>
+            <h3>Register</h3>
+            <p>Create your MediNova account.</p>
+        </div>
+
+        <div class="step">
+            <div class="number">2</div>
+            <h3>Choose Service</h3>
+            <p>Select the healthcare service you need.</p>
+        </div>
+
+        <div class="step">
+            <div class="number">3</div>
+            <h3>Connect</h3>
+            <p>Connect with healthcare professionals.</p>
+        </div>
+
+        <div class="step">
+            <div class="number">4</div>
+            <h3>Receive Care</h3>
+            <p>Get convenient healthcare support at home.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BENEFITS -->
+<section>
+
+    <h2 class="section-title">
+        Why Choose MediNova?
+    </h2>
+
+    <p class="section-subtitle">
+        Designed around the needs of patients and families.
+    </p>
+
+    <div class="benefit-list">
+
+        <div class="benefit">✓ Affordable healthcare support</div>
+        <div class="benefit">✓ Reduced hospital travel</div>
+        <div class="benefit">✓ Personalized care</div>
+        <div class="benefit">✓ Easy health monitoring</div>
+        <div class="benefit">✓ Medicine reminders</div>
+        <div class="benefit">✓ Family caregiver support</div>
+        <div class="benefit">✓ Convenient appointments</div>
+        <div class="benefit">✓ Digital healthcare records</div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta">
+
+    <h2>
+        Take the First Step Toward Better Healthcare
+    </h2>
+
+    <p>
+        Get reliable healthcare support from the comfort
+        of your home with MediNova.
+    </p>
+
+    <a href="#contact" class="btn">
+        Get Started Today
+    </a>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <h2 class="section-title">
+        Contact MediNova
+    </h2>
+
+    <p class="section-subtitle">
+        Have questions? We are here to help.
+    </p>
+
+    <div class="contact-info">
+
+        <p>📧 Email: sivavarma283@gmail.com</p>
+
+        <p>📞 Phone: +91 8121597299</p>
+
+        <p>📍 Location: India</p>
+
+    </div>
+
+</section>
+
+</div>
+
+<!-- SERVICE DETAIL PAGE -->
+<div class="service-page" id="service-page">
+
+    <a class="back-link" onclick="closeService()">← Back to all services</a>
+
+    <div class="service-header">
+        <div class="icon" id="service-icon"></div>
+        <h1 id="service-title"></h1>
+        <p id="service-desc"></p>
+    </div>
+
+    <div class="service-detail-list" id="service-list"></div>
+
+    <div class="service-cta">
+        <a href="#contact" class="btn primary" onclick="closeService()">Book This Service</a>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 MediNova. All Rights Reserved.
+    </p>
+
+    <p>
+        AI-Powered Home Healthcare Platform
+    </p>
+
+</footer>
+
+<script>
+const SERVICES = {
+    doctor: {
+        icon: "👨‍⚕️",
+        title: "Doctor Consultation",
+        desc: "Connect with qualified doctors from home for expert medical advice, follow-ups and prescriptions.",
+        points: [
+            "Video or audio consultations with licensed doctors",
+            "Specialists across general medicine, cardiology, diabetes care and more",
+            "Instant e-prescriptions after every consultation",
+            "Follow-up reminders so nothing is missed"
+        ]
+    },
+    nurse: {
+        icon: "👩‍⚕️",
+        title: "Home Nurse Booking",
+        desc: "Book verified, trained nurses for injections, wound care, physiotherapy support and daily assistance at home.",
+        points: [
+            "Background-verified professional nurses",
+            "Flexible hourly, daily or long-term booking",
+            "Post-surgery and elderly care support",
+            "Real-time visit tracking for families"
+        ]
+    },
+    medicine: {
+        icon: "💊",
+        title: "Medicine Reminders",
+        desc: "Smart reminders that help patients take the right medicine at the right time, every time.",
+        points: [
+            "Custom schedules for every medication",
+            "Alerts sent to patient and family caregiver",
+            "Refill reminders before medicine runs out",
+            "Adherence history shared with your doctor"
+        ]
+    },
+    monitoring: {
+        icon: "❤️",
+        title: "AI Health Monitoring",
+        desc: "Continuous, AI-powered tracking of vital health metrics with early alerts for anything unusual.",
+        points: [
+            "Tracks heart rate, blood pressure, sugar levels and more",
+            "AI flags unusual patterns early",
+            "Simple weekly health summaries",
+            "Shareable reports for your doctor"
+        ]
+    },
+    appointments: {
+        icon: "📅",
+        title: "Appointments",
+        desc: "Schedule, reschedule and manage all your healthcare appointments in one simple calendar.",
+        points: [
+            "One-tap booking with preferred doctors or nurses",
+            "Automatic reminders before every visit",
+            "Easy rescheduling, no phone calls needed",
+            "Full appointment history in one place"
+        ]
+    },
+    prescriptions: {
+        icon: "📄",
+        title: "Digital Prescriptions",
+        desc: "All prescriptions and healthcare records stored securely and accessible anytime, anywhere.",
+        points: [
+            "Digital copies of every prescription",
+            "Searchable medical history",
+            "Easy sharing with pharmacies or specialists",
+            "Secure, private cloud storage"
+        ]
+    },
+    emergency: {
+        icon: "🚨",
+        title: "Emergency Support",
+        desc: "Fast access to emergency healthcare assistance whenever it's needed most.",
+        points: [
+            "One-tap emergency alert to caregivers and responders",
+            "Priority connection to nearby emergency services",
+            "Real-time location sharing during emergencies",
+            "24/7 emergency support line"
+        ]
+    },
+    caregiver: {
+        icon: "👨‍👩‍👧",
+        title: "Caregiver Updates",
+        desc: "Keep family members and caregivers informed about a patient's care and wellbeing at all times.",
+        points: [
+            "Live updates after every consultation or nurse visit",
+            "Shared access to health reports and schedules",
+            "Multiple family members can stay connected",
+            "Peace of mind for families living far away"
+        ]
+    }
+};
+
+function openService(id) {
+    const service = SERVICES[id];
+    if (!service) return;
+
+    document.getElementById('service-icon').textContent = service.icon;
+    document.getElementById('service-title').textContent = service.title;
+    document.getElementById('service-desc').textContent = service.desc;
+
+    const list = document.getElementById('service-list');
+    list.innerHTML = '';
+    service.points.forEach(point => {
+        const item = document.createElement('div');
+        item.textContent = '✓ ' + point;
+        list.appendChild(item);
+    });
+
+    document.getElementById('main-content').style.display = 'none';
+    document.getElementById('service-page').style.display = 'block';
+    window.scrollTo(0, 0);
+    history.replaceState(null, '', '#service-' + id);
+}
+
+function closeService() {
+    document.getElementById('service-page').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    history.replaceState(null, '', '#services');
+}
+
+// Open directly to a service if the URL hash matches on load
+window.addEventListener('load', () => {
+    const hash = window.location.hash.replace('#service-', '');
+    if (hash && SERVICES[hash]) {
+        openService(hash);
+    }
+});
+</script>
+
+</body>
+</html>
